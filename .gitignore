@@ -1,5 +1,5 @@
 
-pixoo/__pycache__/
+pixoo_ng/__pycache__/
 *.egg-info/
 dist/
 build/
