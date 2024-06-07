@@ -1,4 +1,5 @@
-from pixoo import Channel, ImageResampleMode, Pixoo, Font
+import time
+from pixoo_ng import Channel, ImageResampleMode, Pixoo, Font, Simulator, SimulatorConfig
 
 '''
 Create a connection to a Pixoo
@@ -7,10 +8,10 @@ First argument is its IP address (optional)
 The second argument is the display size (optional, default 64)
 The third argument is the 'debug mode' (optional, default False), which enables logging of important actions
 '''
-pixoo = Pixoo('192.168.50.214', 64, True)
+#pixoo = Pixoo('192.168.50.214', 64, True)
 # or
-pixoo = Pixoo()
-
+#pixoo = Pixoo()
+pixoo = Pixoo(simulated=True, simulation_config=SimulatorConfig(4))
 # The following are all 'drawing' methods.
 # Afterwards, be sure to call `pixoo.push()` to send the internal buffer to the connected display
 '''
@@ -152,3 +153,5 @@ NOTE: Currently this is **not** a drawing method, so it'll add the text over wha
 # Send text after pushing all your other data, because it'll otherwise be overwritten if it's not animated
 pixoo.send_text('Hello there', (0, 0), (10, 255, 0), 1, 6)
 pixoo.send_text('GENERAL KENOBI', (0, 15), (255, 0, 0), 2, 6)
+
+time.sleep(6)
